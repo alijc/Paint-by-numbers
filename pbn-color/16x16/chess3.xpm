@@ -1,0 +1,22 @@
+/* XPM */
+static char *chess3[]={
+"16 16 3 1",
+"a c #000000",
+"b c #ff0000",
+"# c #ffffff",
+"bbbbbbbbbbbbbbbb",
+"b######a#######b",
+"b#####aaaa#####b",
+"b####aaaaaa####b",
+"b###aa#aaaaa###b",
+"b##aaaaaaaaaa##b",
+"b#aaaaaaaaaaa##b",
+"baaaaaaaaaaaa##b",
+"baaaaa##aaaaaa#b",
+"b#aa###aaaaaaaab",
+"b#####aaaaaaaaab",
+"b####aaaaaaaaaab",
+"b####aaaaaaaaaab",
+"b###aaaaaaaaaaab",
+"b###aaaaaaaaaaab",
+"bbbbbbbbbbbbbbbb"};

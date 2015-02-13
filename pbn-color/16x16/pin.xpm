@@ -1,0 +1,22 @@
+/* XPM */
+static char *pin[]={
+"16 16 3 1",
+"# c #000000",
+"a c #00ff00",
+". c #ffffff",
+"........#####...",
+".....###aaaaa#..",
+"...##a#aaaaaaa#.",
+"..#aa#aaaaaaaaa#",
+".#aaa#aaaaaaaaa#",
+".#aaa#aaaaaaaaa#",
+"#aaaa#aaaaaaaaa#",
+"#aaaa#aaaaaaaaa#",
+"#aaaa##aaaaaaa#.",
+"#aaaaa##aaaaa##.",
+"#aaaaaa######a#.",
+"##aaaaaa####a#..",
+".##aaaaaaaaaa#..",
+".###aaaaaaaa#...",
+"##.###aaaa##....",
+"#...######......"};

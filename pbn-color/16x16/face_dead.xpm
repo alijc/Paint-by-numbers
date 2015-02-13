@@ -1,0 +1,22 @@
+/* XPM */
+static char *face_dead[]={
+"16 16 3 1",
+"# c #000000",
+"a c #00ff00",
+". c #ffffff",
+".....######.....",
+"...###aaaa###...",
+"..##aaaaaaaa##..",
+".##aaaaaaaaaa##.",
+".#aa#aaaaaa#aa#.",
+"##aa#aaaaaa#aa##",
+"#a#####aa#####a#",
+"#aaa#aaaaaa#aaa#",
+"#aaa#aaaaaa#aaa#",
+"#aaaaaaaaaaaaaa#",
+"##aaaaaaaaaaaa##",
+".#aaaaaaaaaaaa#.",
+".##aa######aa##.",
+"..##aaaaaaaa##..",
+"...###aaaa###...",
+".....######....."};

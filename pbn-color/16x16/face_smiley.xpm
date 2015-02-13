@@ -1,0 +1,22 @@
+/* XPM */
+static char *face_smiley[]={
+"16 16 3 1",
+"# c #000000",
+"a c #00ff00",
+". c #ffffff",
+"................",
+".....######.....",
+"...###aaaa###...",
+"..##aaaaaaaa##..",
+"..#aaaaaaaaaa#..",
+".##aa##aa##aa##.",
+".#aaa##aa##aaa#.",
+".#aaaaaaaaaaaa#.",
+".#aaaaaaaaaaaa#.",
+".#aaaaaaaaaaaa#.",
+".##aa#aaaa#aa##.",
+"..#aaa####aaa#..",
+"..##aaaaaaaa##..",
+"...###aaaa###...",
+".....######.....",
+"................"};

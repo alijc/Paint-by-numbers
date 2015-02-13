@@ -1,0 +1,356 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Solving Color Nonograms</title>
+</head>
+<body>
+
+<h1>Solving Color Nonograms</h1>
+
+<a href="#background">Background</a><br>
+<a href="#abandoned1">First abandoned algorithm</a><br>
+<a href="#abandoned2">Second abandoned algorithm</a><br>
+<a href="#algorithm1">First acceptable algorithm for the first step</a><br>
+<a href="#assembling">Next step, assembling the rows</a><br>
+<a href="#algorithm21">First acceptable algorithm for the second step</a><br>
+<a href="#algorithm22">Second (sort of) acceptable algorithm for the second step</a><br>
+<a href="#trimming">Cutting out the pikers</a><br>
+<a href="#trimming2">Cutting out yet more pikers</a><br>
+<a href="#exercise">An exercise for the reader</a><br>
+<a href="#source">The source code</a><br>
+<a href="#compare">Comparisons between languages</a><br>
+<a href="#optimize">Optimizations done to the scripts</a><br>
+
+
+<h2><a name="background">Background</a></h2>
+
+Some time ago I wrote a <a href="../../games/puzzles.html">Java applet</a>
+ that would let people play nonograms
+(which were called 'Paint-by-Number' puzzles when I first met them).  I
+then had to create a bunch of puzzles for people to solve.  I made 
+extensive use of Steven Simpson's 
+<a href="http://www.comp.lancs.ac.uk/computing/users/ss/software/nonowimp/">
+nonogram</a> program to make sure that these puzzles had unique solutions.
+<p>
+Recently, I revisited that my old applet and revised it to deal with 
+<a href="../index.html">color nonograms</a>
+ (that is, puzzles with colors other than simply black and white).
+Unfortunately, the nonogram program will not work with multiple colors.
+As a matter of fact, the .non format that it uses will not even admit to
+the possibility of the existence of such things.
+<p>
+So I decided to write my own.  The first thing to do was to read in an .xpm
+file and figure out its row and columns keys would be.  That was pretty simple.
+Next we had to forget what the picture looked like and solve it, using the keys
+that we'd generated.  That turned out to be a bit harder.
+
+<h2><a name="abandoned1">First abandoned algorithm</a></h2>
+
+Well, actually, I thought that it'd be simple.  Simply run though every 
+possible permutation of the colors in this image, and check each one to
+see if it matches the keys.  The number of permutations should only be
+<p><center><code>numColors * numRows * numColumns</code></center><p>
+right?
+<p>
+Uh, wrong.
+<p>
+The actual number is 
+<p><center><code>numColors<sup>(numRows * numColumns)</sup></code></center><p>
+which is an entirely different kettle of fish.
+<p>
+I did write the code to do it, recursively looping through all rows, columns 
+and colors, and successfully tested it with a little 2x3 test image, but 
+when I tried it on this four-color 16x16 image...
+<br><img src="./abc.gif" height="80" width="80" alt="ABC image"><br>
+Well, let's see. <code>4<sup>(16 * 16)</sup></code> is .......1.340780793e+154.
+
+<h2><a name="abandoned2">Second abandoned algorithm</a></h2>
+
+So next I decided to attack the individual rows and columns instead of the
+entire grid.  I'd run through all possible permutations of each row, compare
+each against its key and select the ones that match.  Then I'd try every 
+combination of the matching rows and find the ones that match the column
+keys.
+<p>
+So, to start with, we need every permutation of a row of the image.
+That's <code>4<sup>16</sup></code>, or, uh,  4.29497e+09.
+<p>
+I wrote this code up, just to see how bad it was, and it finished.
+It took several minutes, but it finished.
+
+<h2><a name="algorithm11">First acceptable algorithm for the first step</a></h2>
+
+I took a step back, and realized that I wasn't going to solve this problem
+by crunching numbers - I was going to have to manipulate strings.  So obviously
+I was going to have to switch from C to Perl, er, I mean, C++, and the STL
+string class.
+<p>
+So, after porting the code to read the xpm file and create the keys, I added
+a function that, for each key, calculated the number of white spaces needed
+to complete the row or column, counted the number of holes into which white
+spaces could be inserted, and then inserted every possible permutation of
+spaces into these holes.  This code ran in a fraction of a second.
+
+<h2><a name="assembling">Next step, assembling the rows</a></h2>
+
+Now that we've found all of the possible rows, all we have to do was to 
+assemble every possible permutation of them and check each result.  In the
+case of the ABC image, that's
+<p><center><code>
+15 * 105 * 105 * 13 * 105 * 286 * 105 * 105 * 14 * 105 * 286 * 286 * 16 * 16 *
+105 * 14
+</code></center>
+<p>
+or 2.1932685999e+26.
+<p>
+Ouch!
+
+<h2><a name="algorithm21">First acceptable algorithm for the second step</a></h2>
+
+OK, this isn't going to work.  So what do we try now?
+<p>
+What if we were to check the image as it's being built up?  Every time
+we lay down a new row, we could make sure that the part of the image we
+have so far still matches the column keys.  And if it doesn't, we don't
+have to check any of the permutations that start with this combination
+of rows.
+<p>
+This one works, mostly.  Here's a graph showing the time it takes to solve
+39 of the 40 16x16 puzzles that I had made up.
+<p>
+<img src="al1-edited.gif" height="267" width="425" 
+	alt="plot of first algorithm (edited)">
+<p>
+That doesn't seem so bad, does it?  One solution takes over a minute, but
+the rest are pretty reasonable.
+<p>
+OK, let me put the edited-out value back in...
+<p>
+<img src="al1.gif" height="267" width="425" 
+		alt="plot of first algorithm (unedited)">
+<p>
+Yep, you read that right. It's over five minutes. This is the offending image:
+<p>
+<img src="firecracker.gif" height="80" width="80" alt="firecracker image">
+
+<h2><a name="algorithm22">
+Second (sort of) acceptable algorithm for the second step</a></h2>
+
+So what happens if we knock impossible possible columns out of the running the
+same way that we're already knocking out impossible possible rows?  (Oh yeah,
+did I mention that I've also assembled a list of possible columns, and am 
+using them to determine whether the partial image is still possible?)
+<p>
+We can't remove the possible columns from the main store, since we need to 
+keep the originals for when we work our way back up the stack out of our
+recursions.  But we can make a new copy for each new row, let it erase the
+columns that no longer fit and pass it on to the next row to be trimmed
+a bit more.
+<p>
+The results of this algorithm were interesting, but not altogether satisfying.
+<p>
+<img src="al12.gif" height="267" width="425" 
+	alt="plot of both algorithms together">
+<p>
+Note that the times for the two worst cases have been improved.  But some of
+the other, previously reasonable, times have gotten very, very bad.  It seems
+that for some images the extra overhead of making copies of the possible
+columns more than outweighs the savings of having to check fewer columns.
+
+<h2><a name="trimming">Cutting out the pikers</a></h2>
+
+The next idea is to do some pre-processing, that is, to use the row keys to 
+eliminate some of the possible columns, and visa versa.
+<p>
+So, for each row, we 'and' all of the possible permutations together.
+What we're doing is looking at all of a row's possible permutations and 
+looking for squares that are the same color in each.  That 
+means that that square <i>has</i> to be that color.  (This is the 
+mechanical equivalent to a person looking at the puzzle and muttering,
+"Well, row #3 has a single black block 20 squares long, but there are
+only 16 squares in the row, so the middle 8 squares <i>have</i> to be black.")
+<p>
+When we've done this to all of the rows, we end up with a matrix with many
+squares of unknown color, but with some squares whose color we know.  We can
+then check all of the possible columns and chuck the ones that don't match
+what we know know about the image.  Then we can go on to solve the puzzle
+using one of the two algorithms that we've already got.
+<p>
+But before we do this, we might as well cut down on the possible rows as well,
+'and'ing all of the possible columns together and throwing out the 
+rows that don't match.
+<p>
+When I coded this up (using algorithm #1) I got these times...
+<p>
+<img src="al12p1.gif" height="267" width="425" 
+	alt="plot of both algorithms, plus the first algorithm, pre-processed">
+<p>
+Bingo!
+<br>Let's look at that again, using a log scale to see what's going on 
+close to zero...
+<p>
+<img src="al12p1-log.gif" height="267" width="425" 
+		alt="same as above, with a log scale">
+<p>
+In nearly every instance, the extra processing to get rid of possible
+rows and columns pays off.
+<p>
+Let's compare the times of both algorithms when the data's been pre-processed.
+<p>
+<img src="alp1p2.gif" height="267" width="425" 
+	alt="plot of both algorithms, pre-processed">
+<p>
+I think we have a winner.
+
+<h2><a name="trimming2">Cutting out yet more pikers</a></h2>
+
+So let's throw algorithm #2 out, since it's not saving us anything anymore.
+<p>
+But there's still one more thing we can try to speed things up.  In the 
+pre-processing step, we're using the row keys to eliminate some of the
+possible columns and the column keys to eliminate some of the possible
+rows, ending up with a subset of the original possible rows and columns.
+We can repeat that step, using the reduced set of possible rows to further
+reduce the set of possible columns, and visa versa.  We can do this ad 
+infinitum.  Well not really, but we can do it until we reach a point
+where we can't eliminate any more rows or columns.
+<p>
+So, I changed the program to pre-process the puzzle until it won't 
+pre-process anymore, and then went on to solve it using the first algorithm.
+<p>
+<img src="alrp.gif" height="267" width="425" 
+	alt="plot of first algorithm, repeatedly pre-processed">
+<p>
+OK, that's good enough.  I'm going to quit now.
+<p>
+But first I'll add a comment.  It was interesting to note that when I switched
+to doing the pre-processing repeatedly, sometimes the puzzle actually got
+solved in the pre-processing step.  I suspect, that for the original two-color
+nonograms, this pre-processing might always be enough to solve the puzzle.
+<p>
+The reason that it can't solve multi-colored nonograms is because it doesn't
+emulate the human reasoning completely.  Where a person can think, "By the 
+row key I see that this square can be either black or white, while by the 
+column key it must be either white or red.  Therefore, it must be white.",
+this program can only mark it as 'unknown'.
+
+<h2><a name="exercise">An exercise for the reader</a></h2>
+<strike>
+Remember a little while ago, when I said that this program can't completely
+emulate human reasoning when solving multi-colored nonograms?  Well, I'm
+thinking that it can be made to.  All it would take would be to add some
+intelligence to the Image class, to be able to handle states like 'red or
+white', in addition to the current valid states of 'red', 'white', 'black',
+etc., or 'unknown color'.
+</strike>
+<p>
+Never mind, I went and did this myself.  The pre-processing step now keeps
+track of multiplicities of colors when trimming possible rows and columns.
+Since this brings the pre-processing very nearly up to the level of what a 
+human can do, I decided to print out the preliminary image in addition to any
+final ones.
+
+<h2><a name="source">The source code</a></h2>
+
+Here's the final <a href="./pbnxpm.C">C code</a> (compiled with gcc 3.2.2)
+<p>
+And here's <a href="./pbnxpm.pl">another one</a> written in Perl (v5.8.0).  
+This one uses the same algorithm, but the performance is somewhat different.  
+For 'simple' puzzles, in which there are only a few hundred combinations 
+of possible rows and columns, the Perl program typically takes 3 to 4 
+times longer than the C++ program.  But for more difficult puzzles,
+those having thousands of possible combinations, the difference in 
+performance flips dramatically, with the Perl program doing in under a
+minute what would take the C++ program a half hour.
+<p>
+And here's <a href="./pbnxpm.py">one in Python</a> (v2.2.2).  It's using the 
+same algorithm, and is as complete as the Perl script, and ends up being even
+faster.  I think I may have just become a convert.
+<p>
+And just because I don't know when to stop, here's <a href="./pbnxpm.rb">
+another one in Ruby</a> (v1.6.8).
+
+<h2><a name="compare">Comparisons between languages</a></h2>
+
+Here are the final results for the two scripts (for the first set of 16x16
+puzzles, along with another set of 20x20 puzzles), after I optimized the heck
+out of both of them:
+<p>
+<img src="plpy16.gif" height="267" width="425" 
+	alt="plot of Perl and Python execution times (16x16 puzzles)">
+<img src="plpy20.gif" height="267" width="425" 
+	alt="plot of Perl and Python execution times (20x20 puzzles)">
+<p>
+And just for comparison, here's the C++ results added in as well:
+<p>
+<img src="cplpy16.gif" height="267" width="425" 
+	alt="plot of C++, Perl and Python execution times (16x16 puzzles)">
+<img src="cplpy20.gif" height="267" width="425" 
+	alt="plot of C++, Perl and Python execution times (20x20 puzzles)">
+<p>
+In this application, the major advantage that both Perl and Python have over 
+C++ is their regular expression support.  And the advantage that Python has
+over Perl is its ability to split regular expression pattern matching in 
+two - to compile the regular expression once, and then do the pattern matching
+many times.
+<p>
+And here are the results of the Perl, Python and Ruby scripts together:
+<p>
+<img src="plpyrb16.gif" height="267" width="425" 
+	alt="plot of Perl, Python and Ruby execution times (16x16 puzzles)">
+<img src="plpyrb20.gif" height="267" width="425" 
+	alt="plot of Perl, Python and Ruby execution times (20x20 puzzles)">
+<p>
+Ruby, like Python, has the capability to compile a regular execution once
+before matching it repeatedly.  But try as I might, I still couldn't get the 
+Ruby execution times down to the level of the Python ones.  For the worst
+puzzles, I couldn't even get the Ruby script to be as fast as the Perl one.
+Now granted, I'd never looked at Ruby before (in other words, I'm a Ruby rube)
+so that might merely be because of my inexperience.
+
+<h2><a name="optimize">Optimizations done to the scripts</a></h2>
+
+<table border=3 cellpadding=3 width="100%">
+<tr>
+<th>Perl
+<th>Python
+<tr>
+<td>
+Used s/// to manipulate the strings.
+<td>
+Used s/// to manipulate the strings.
+<tr>
+<td>
+Used substr() to extract one character from a string.<br>
+(faster than unpack(), m//, or split //)
+<td>
+Used list.reverse() instead of counting the index downwards
+<tr>
+<td>
+Used hashes to store the multi-color state.<br>
+(faster than strings or lists)
+<td>
+Used dictionaries to store the multi-color state.<br>
+(faster than strings or lists)
+<tr>
+<td>
+Changed function calls in loops to inline statements.
+<td>
+Used deeply indexed data instead of convenience objects.
+<tr>
+<td>
+Find what fits in one function call.<br>
+Build the template once, and call grep() to find the fits. 
+<td>
+Find what fits in one function call.<br>
+Compile the expression once, and match it many times.
+</table>
+
+
+<p>
+Enjoy!<br>
+Ali Corbin <br>
+<a href="mailto:ali@blindchicken.com">ali@blindchicken.com</a><br>
+</body>
+</html>

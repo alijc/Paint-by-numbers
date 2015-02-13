@@ -1,0 +1,22 @@
+/* XPM */
+static char *strawberry[]={
+"16 16 3 1",
+"# c #000000",
+"a c #ff0000",
+". c #ffffff",
+"................",
+"........#.......",
+"...aaa.#.#......",
+"..aa.a#.###.....",
+".aaaaa.###.aaa..",
+"aaa.a.a.#.#a.aa.",
+"a.aaaaaaaaa#aaaa",
+"aaaa.a.aa.a#a.a.",
+"aa.aaaaaaaa#aaaa",
+"aaaaaaa.aaa#.a.a",
+"a.aaa.aaa.#.aaaa",
+"aaa.aaa.a#aaa.a#",
+".aaaa.aa#aaa.a#.",
+"..a.aaa#.a.aa#..",
+"...aa#.aaaaa#...",
+".........aa#...."};

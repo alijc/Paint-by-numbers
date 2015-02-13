@@ -1,0 +1,21 @@
+# upload the new files to the server...
+rsync --rsh=ssh --archive --verbose --update --cvs-exclude \
+    16x16/*xpm zaphod.axian.com:public_html_bcs/pbn/16x16
+
+rsync --rsh=ssh --archive --verbose --update --cvs-exclude \
+    20x20/*xpm zaphod.axian.com:public_html_bcs/pbn/20x20
+
+rsync --rsh=ssh --archive --verbose --update --cvs-exclude \
+    24x24/*xpm zaphod.axian.com:public_html_bcs/pbn/24x24
+
+rsync --rsh=ssh --archive --verbose --update --cvs-exclude \
+    hard-16x16/*xpm zaphod.axian.com:public_html_bcs/pbn/hard-16x16
+
+rsync --rsh=ssh --archive --verbose --update --cvs-exclude \
+    hard-20x20/*xpm zaphod.axian.com:public_html_bcs/pbn/hard-20x20
+
+rsync --rsh=ssh --archive --verbose --update --cvs-exclude \
+    hard-24x24/*xpm zaphod.axian.com:public_html_bcs/pbn/hard-24x24
+
+rsync --rsh=ssh --archive --verbose --update --cvs-exclude \
+    *.html zaphod.axian.com:public_html_bcs/pbn 

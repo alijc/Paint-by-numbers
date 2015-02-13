@@ -1,0 +1,23 @@
+/* XPM */
+static char *globe[]={
+"16 16 4 1",
+"# c #000000",
+"b c #0000ff",
+"a c #00ff00",
+". c #ffffff",
+".....######.....",
+"...##abbbaa##...",
+"..#aabbbbaaab#..",
+".#aabbaaaabbbb#.",
+"#aaabbbbbabbbbb#",
+"#aaabbbbbaabbbb#",
+"#ababbbbbaaabbb#",
+"#bbabbbbaabbbbb#",
+"#bbabbaaaaabbbb#",
+"#bbbabbaaabbbbb#",
+".#bbbaaaaabbbb#.",
+"..#bbbaabaabb#..",
+"...##bbbbbb##...",
+".....######.....",
+".......##.......",
+"....########...."};

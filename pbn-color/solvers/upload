@@ -1,0 +1,2 @@
+rsync --rsh=ssh --archive --verbose --update --cvs-exclude * \
+        zaphod.axian.com:public_html_bcs/pbn/solvers 

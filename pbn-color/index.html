@@ -1,0 +1,334 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title> Paint by Numbers  - new interface</title>
+</head>
+<body>
+
+<center><h1>Paint by Numbers - new interface</h1></center>
+<center><a href="../games/puzzles.html">(Back to old puzzles)</a></center>
+<center><a href="#puzzles">(Straight to the new puzzles)</a></center>
+<p>
+
+Here's another version of the Paint by Numbers Java applet.
+
+<p>
+<applet 
+   archive="PBN13.jar"
+   code="PBN13.class"
+   name="Paint by Numbers"
+   width=440
+   height=400 >
+  <param name=filename value=16x16/fish7.xbm>
+  <param name=solved   value=false>
+</applet>
+<p>
+
+The main difference in using it is the way the colors are selected.
+Instead of using different mouse buttons or holding down different
+keys on the keyboard while dragging the mouse, we now have buttons
+on the screen that you press to select the colors.
+<p>
+Another slight difference is that the logic to determine which blocks
+are 'good' or 'bad' has changed a little.  And the 'bad' blocks are 
+now marked in pink instead of red, to make it easier to read the numbers.
+<p>
+An alternative to hitting the buttons with the mouse is to use keyboard
+shortcuts.  If you mouse with your right hand, then you can use the 'a', 's' 
+and 'd' keys to switch between colors.  Or if you mouse with your left hand,
+then the ';', 'l' and 'k' keys will work.
+<p>
+For those interested in the Java workings, the new applet uses Swing components
+instead of graphics primitives wherever possible.  It's also been updated to 
+use the new event model.  And it now reads the colors it needs out of the data,
+instead of hardcoding them to black and white.
+<p>
+What, you say? How silly to get the colors from the data when they're always
+going to be black and white anyway!  Oh, yeah.  There's one new feature that
+I forgot to mention:
+<p>
+<applet 
+   archive="PBN13.jar"
+   code="PBN13.class"
+   name="Paint by Numbers"
+   width=460
+   height=400 >
+  <param name=filename value=16x16/fish7.xpm>
+  <param name=solved   value=false>
+</applet>
+<p>
+We can do puzzles in color now.
+<p>
+The idea is that you can now have two or three dark colors on a white 
+background.  You do the puzzles the same way, counting back and forth
+to figure out where the colored squares go.
+<p>
+There's one tricky bit with the colored puzzles.  Two adjacent dark blocks,
+if they're of different colors, might, or might not, have a white square 
+between them.
+<p>
+(
+This set of puzzles was created with Java 1.3.1.  If the java on your
+computer is too old, it might not be able to display them.  You might
+want to download a newer version from java.sun.com.
+)
+
+<p>
+<a name="puzzles">Here's a few more puzzles to play with:</a>
+<table border=3 cellpadding=3>
+<tr><th rowspan=4>16x16:
+<td><a href="g16x16-1.html">1</a>
+<td><a href="g16x16-2.html">2</a>
+<td><a href="g16x16-3.html">3</a>
+<td><a href="g16x16-4.html">4</a>
+<td><a href="g16x16-5.html">5</a>
+<td><a href="g16x16-6.html">6</a>
+<td><a href="g16x16-7.html">7</a>
+<td><a href="g16x16-8.html">8</a>
+<td><a href="g16x16-9.html">9</a>
+<td><a href="g16x16-10.html">10</a>
+<td><a href="g16x16-11.html">11</a>
+<td><a href="g16x16-12.html">12</a>
+<td><a href="g16x16-13.html">13</a>
+<td><a href="g16x16-14.html">14</a>
+<td><a href="g16x16-15.html">15</a>
+<td><a href="g16x16-16.html">16</a>
+<td><a href="g16x16-17.html">17</a>
+<td><a href="g16x16-18.html">18</a>
+<td><a href="g16x16-19.html">19</a>
+<td><a href="g16x16-20.html">20</a>
+<tr>
+<td><a href="g16x16-21.html">21</a>
+<td><a href="g16x16-22.html">22</a>
+<td><a href="g16x16-23.html">23</a>
+<td><a href="g16x16-24.html">24</a>
+<td><a href="g16x16-25.html">25</a>
+<td><a href="g16x16-26.html">26</a>
+<td><a href="g16x16-27.html">27</a>
+<td><a href="g16x16-28.html">28</a>
+<td><a href="g16x16-29.html">29</a>
+<td><a href="g16x16-30.html">30</a>
+<td><a href="g16x16-31.html">31</a>
+<td><a href="g16x16-32.html">32</a>
+<td><a href="g16x16-33.html">33</a>
+<td><a href="g16x16-34.html">34</a>
+<td><a href="g16x16-35.html">35</a>
+<td><a href="g16x16-36.html">36</a>
+<td><a href="g16x16-37.html">37</a>
+<td><a href="g16x16-38.html">38</a>
+<td><a href="g16x16-39.html">39</a>
+<td><a href="g16x16-40.html">40</a>
+<tr>
+<td><a href="g16x16-41.html">41</a>
+<td><a href="g16x16-42.html">42</a>
+<td><a href="g16x16-43.html">43</a>
+<td><a href="g16x16-44.html">44</a>
+<td><a href="g16x16-45.html">45</a>
+<td><a href="g16x16-46.html">46</a>
+<td><a href="g16x16-47.html">47</a>
+<td><a href="g16x16-48.html">48</a>
+<td><a href="g16x16-49.html">49</a>
+<td><a href="g16x16-50.html">50</a>
+<td><a href="g16x16-51.html">51</a>
+<td><a href="g16x16-52.html">52</a>
+<td><a href="g16x16-53.html">53</a>
+<td><a href="g16x16-54.html">54</a>
+<td><a href="g16x16-55.html">55</a>
+<td><a href="g16x16-56.html">56</a>
+<td><a href="g16x16-57.html">57</a>
+<td><a href="g16x16-58.html">58</a>
+<td><a href="g16x16-59.html">59</a>
+<td><a href="g16x16-60.html">60</a>
+<tr>
+<td><a href="g16x16-61.html">61</a>
+<td><a href="g16x16-62.html">62</a>
+<td><a href="g16x16-63.html">63</a>
+<td><a href="g16x16-64.html">64</a>
+<td><a href="g16x16-65.html">65</a>
+<td><a href="g16x16-66.html">66</a>
+<td><a href="g16x16-67.html">67</a>
+
+<tr><th rowspan=4>20x20:
+<td><a href="g20x20-1.html">1</a>
+<td><a href="g20x20-2.html">2</a>
+<td><a href="g20x20-3.html">3</a>
+<td><a href="g20x20-4.html">4</a>
+<td><a href="g20x20-5.html">5</a>
+<td><a href="g20x20-6.html">6</a>
+<td><a href="g20x20-7.html">7</a>
+<td><a href="g20x20-8.html">8</a>
+<td><a href="g20x20-9.html">9</a>
+<td><a href="g20x20-10.html">10</a>
+<td><a href="g20x20-11.html">11</a>
+<td><a href="g20x20-12.html">12</a>
+<td><a href="g20x20-13.html">13</a>
+<td><a href="g20x20-14.html">14</a>
+<td><a href="g20x20-15.html">15</a>
+<td><a href="g20x20-16.html">16</a>
+<td><a href="g20x20-17.html">17</a>
+<td><a href="g20x20-18.html">18</a>
+<td><a href="g20x20-19.html">19</a>
+<td><a href="g20x20-20.html">20</a>
+<tr>
+<td><a href="g20x20-21.html">21</a>
+<td><a href="g20x20-22.html">22</a>
+<td><a href="g20x20-23.html">23</a>
+<td><a href="g20x20-24.html">24</a>
+<td><a href="g20x20-25.html">25</a>
+<td><a href="g20x20-26.html">26</a>
+<td><a href="g20x20-27.html">27</a>
+<td><a href="g20x20-28.html">28</a>
+<td><a href="g20x20-29.html">29</a>
+<td><a href="g20x20-30.html">30</a>
+<td><a href="g20x20-31.html">31</a>
+<td><a href="g20x20-32.html">32</a>
+<td><a href="g20x20-33.html">33</a>
+<td><a href="g20x20-34.html">34</a>
+<td><a href="g20x20-35.html">35</a>
+<td><a href="g20x20-36.html">36</a>
+<td><a href="g20x20-37.html">37</a>
+<td><a href="g20x20-38.html">38</a>
+<td><a href="g20x20-39.html">39</a>
+<td><a href="g20x20-40.html">40</a>
+<tr>
+<td><a href="g20x20-41.html">41</a>
+<td><a href="g20x20-42.html">42</a>
+<td><a href="g20x20-43.html">43</a>
+<td><a href="g20x20-44.html">44</a>
+<td><a href="g20x20-45.html">45</a>
+<td><a href="g20x20-46.html">46</a>
+<td><a href="g20x20-47.html">47</a>
+<td><a href="g20x20-48.html">48</a>
+<td><a href="g20x20-49.html">49</a>
+<td><a href="g20x20-50.html">50</a>
+<td><a href="g20x20-51.html">51</a>
+<td><a href="g20x20-52.html">52</a>
+<td><a href="g20x20-53.html">53</a>
+<td><a href="g20x20-54.html">54</a>
+<td><a href="g20x20-55.html">55</a>
+<td><a href="g20x20-56.html">56</a>
+<td><a href="g20x20-57.html">57</a>
+<td><a href="g20x20-58.html">58</a>
+<td><a href="g20x20-59.html">59</a>
+<td><a href="g20x20-60.html">60</a>
+<tr>
+<td><a href="g20x20-61.html">61</a>
+<td><a href="g20x20-62.html">62</a>
+<td><a href="g20x20-63.html">63</a>
+<td><a href="g20x20-64.html">64</a>
+<td><a href="g20x20-65.html">65</a>
+<td><a href="g20x20-66.html">66</a>
+<td><a href="g20x20-67.html">67</a>
+
+<tr><th rowspan=4>24x24:
+<td><a href="g24x24-1.html">1</a>
+<td><a href="g24x24-2.html">2</a>
+<td><a href="g24x24-3.html">3</a>
+<td><a href="g24x24-4.html">4</a>
+<td><a href="g24x24-5.html">5</a>
+<td><a href="g24x24-6.html">6</a>
+<td><a href="g24x24-7.html">7</a>
+<td><a href="g24x24-8.html">8</a>
+<td><a href="g24x24-9.html">9</a>
+<td><a href="g24x24-10.html">10</a>
+<td><a href="g24x24-11.html">11</a>
+<td><a href="g24x24-12.html">12</a>
+<td><a href="g24x24-13.html">13</a>
+<td><a href="g24x24-14.html">14</a>
+<td><a href="g24x24-15.html">15</a>
+<td><a href="g24x24-16.html">16</a>
+<td><a href="g24x24-17.html">17</a>
+<td><a href="g24x24-18.html">18</a>
+<td><a href="g24x24-19.html">19</a>
+<td><a href="g24x24-20.html">20</a>
+<tr>
+<td><a href="g24x24-21.html">21</a>
+<td><a href="g24x24-22.html">22</a>
+<td><a href="g24x24-23.html">23</a>
+<td><a href="g24x24-24.html">24</a>
+<td><a href="g24x24-25.html">25</a>
+<td><a href="g24x24-26.html">26</a>
+<td><a href="g24x24-27.html">27</a>
+<td><a href="g24x24-28.html">28</a>
+<td><a href="g24x24-29.html">29</a>
+<td><a href="g24x24-30.html">30</a>
+<td><a href="g24x24-31.html">31</a>
+<td><a href="g24x24-32.html">32</a>
+<td><a href="g24x24-33.html">33</a>
+<td><a href="g24x24-34.html">34</a>
+<td><a href="g24x24-35.html">35</a>
+<td><a href="g24x24-36.html">36</a>
+<td><a href="g24x24-37.html">37</a>
+<td><a href="g24x24-38.html">38</a>
+<td><a href="g24x24-39.html">39</a>
+<td><a href="g24x24-40.html">40</a>
+<tr>
+<td><a href="g24x24-41.html">41</a>
+<td><a href="g24x24-42.html">42</a>
+<td><a href="g24x24-43.html">43</a>
+<td><a href="g24x24-44.html">44</a>
+<td><a href="g24x24-45.html">45</a>
+<td><a href="g24x24-46.html">46</a>
+<td><a href="g24x24-47.html">47</a>
+<td><a href="g24x24-48.html">48</a>
+<td><a href="g24x24-49.html">49</a>
+<td><a href="g24x24-50.html">50</a>
+<td><a href="g24x24-51.html">51</a>
+<td><a href="g24x24-52.html">52</a>
+<td><a href="g24x24-53.html">53</a>
+<td><a href="g24x24-54.html">54</a>
+<td><a href="g24x24-55.html">55</a>
+<td><a href="g24x24-56.html">56</a>
+<td><a href="g24x24-57.html">57</a>
+<td><a href="g24x24-58.html">58</a>
+<td><a href="g24x24-59.html">59</a>
+<td><a href="g24x24-60.html">60</a>
+<tr>
+<td><a href="g24x24-61.html">61</a>
+<td><a href="g24x24-62.html">62</a>
+<td><a href="g24x24-63.html">63</a>
+<td><a href="g24x24-64.html">64</a>
+</table>
+
+<p>Here are some harder ones:
+<table border=3 cellpadding=3>
+<tr><th>16x16:
+<td><a href="ghard-16x16-1.html">1</a>
+<td><a href="ghard-16x16-2.html">2</a>
+<td><a href="ghard-16x16-3.html">3</a>
+<td><a href="ghard-16x16-4.html">4</a>
+<td><a href="ghard-16x16-5.html">5</a>
+<td><a href="ghard-16x16-6.html">6</a>
+<td><a href="ghard-16x16-7.html">7</a>
+<td><a href="ghard-16x16-8.html">8</a>
+<tr><th>20x20:
+<td><a href="ghard-20x20-1.html">1</a>
+<td><a href="ghard-20x20-2.html">2</a>
+<td><a href="ghard-20x20-3.html">3</a>
+<td><a href="ghard-20x20-4.html">4</a>
+<td><a href="ghard-20x20-5.html">5</a>
+<td><a href="ghard-20x20-6.html">6</a>
+<td><a href="ghard-20x20-7.html">7</a>
+<td><a href="ghard-20x20-8.html">8</a>
+<td><a href="ghard-20x20-9.html">9</a>
+<td><a href="ghard-20x20-10.html">10</a>
+<td><a href="ghard-20x20-11.html">11</a>
+<tr><th>24x24:
+<td><a href="ghard-24x24-1.html">1</a>
+<td><a href="ghard-24x24-2.html">2</a>
+<td><a href="ghard-24x24-3.html">3</a>
+<td><a href="ghard-24x24-4.html">4</a>
+<td><a href="ghard-24x24-5.html">5</a>
+<td><a href="ghard-24x24-6.html">6</a>
+<td><a href="ghard-24x24-7.html">7</a>
+<td><a href="ghard-24x24-8.html">8</a>
+<td><a href="ghard-24x24-9.html">9</a>
+</table>
+
+<p>
+And here's a <a href="./solvers/index.html">
+program</a> for solving these multi-colored puzzles.
+
+</body>
+</html>

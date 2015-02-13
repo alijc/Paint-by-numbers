@@ -1,0 +1,22 @@
+/* XPM */
+static char *butterfly2[]={
+"16 16 3 1",
+"# c #000000",
+"a c #0000ff",
+". c #ffffff",
+"...........####.",
+"..........#aaa##",
+".......#.#aaaaa#",
+"......#..#aaaaa#",
+"......#.#aaaaaa#",
+"......#.#aaaaa#.",
+"...#####aaaaaa#.",
+"..#...###aaaaa#.",
+"....##a###aaaaa#",
+"..##aaaa###aaaa#",
+".#aaaaaaa##aaaa#",
+"#aaaaaaaaaa#aaa#",
+"#aaaaaaaaaaa####",
+"#aaaaaaaaaaa#..#",
+"##aaa###aaaa#...",
+".####...######.."};

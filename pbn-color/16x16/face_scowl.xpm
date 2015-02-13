@@ -1,0 +1,22 @@
+/* XPM */
+static char *face_scowl[]={
+"16 16 3 1",
+"# c #000000",
+"a c #00ff00",
+". c #ffffff",
+"................",
+".....#####......",
+"...###aaa###....",
+"..##aaaaaaa##...",
+".##aaaaaaaaa##..",
+".#aaa#aaa#aaa#..",
+"##aa###a###aa##.",
+"#aaaa#aaa#aaaa#.",
+"#aaaaaaaaaaaaa#.",
+"#aaaaa###aaaaa#.",
+"##aaa##a##aaa##.",
+".#aa##aaa##aa#..",
+".##aaaaaaaaa##..",
+"..##aaaaaaa##...",
+"...###aaa###....",
+".....#####......"};

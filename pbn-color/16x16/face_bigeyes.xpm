@@ -1,0 +1,22 @@
+/* XPM */
+static char *face_bigeyes[]={
+"16 16 3 1",
+"# c #000000",
+"a c #00ff00",
+". c #ffffff",
+".....######.....",
+"...###aaaa###...",
+"..##aaaaaaaa##..",
+".##aa#aaaa#aa##.",
+".#aa#.#aa#.#aa#.",
+"##aa#.#aa#.#aa##",
+"#aaaa#aaaa#aaaa#",
+"#aaaaaaaaaaaaaa#",
+"#aaaaaaaaaaaaaa#",
+"#aaa#aaaaaa#aaa#",
+"##aa##aaaa##aa##",
+".#aaa##aa##aaa#.",
+".##aaa####aaa##.",
+"..##aaaaaaaa##..",
+"...###aaaa###...",
+".....######....."};
